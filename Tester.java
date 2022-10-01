@@ -34,16 +34,15 @@ public class Tester {
 			System.out.print("Have you lived in California for the last two years? \n(Answer YES or NO)-> ");
 			String livedInCali = scan.nextLine();
 			student.setLivedInCali(livedInCali);
-			
-			if (student.checkLivedInCali(livedInCali) == false) { //If student fails the criterion, check if it satisfies D
-				System.out.print("Have your parents paid California state tax for at least 1 year in their lifetime? \n(Answer YES or NO)-> ");
-				String paidStateTax = scan.nextLine();
-				student.setPaidStateTax(paidStateTax);
-				if(student.checkPaidStateTax(paidStateTax) == false) {
-					System.out.print("Have you worked part time for atleast 6 months in your field of study? \n(Answer YES or NO)-> ");
-					String partTime = scan.nextLine();
-					student.setPartTime(partTime);
-					if(student.checkPartTime(partTime) == false) { //If student fails the criterion, check if it satisfies E
+			if (student.checkLivedInCali(livedInCali) == false) { 
+				System.out.print("Have you worked part time for atleast 6 months in your field of study? \n(Answer YES or NO)-> ");
+				String partTime = scan.nextLine();
+				student.setPartTime(partTime);
+				if(student.checkPartTime(partTime) == false) {
+					System.out.print("Have your parents paid California state tax for at least 1 year in their lifetime? \n(Answer YES or NO)-> ");
+					String paidStateTax = scan.nextLine();
+					student.setPaidStateTax(paidStateTax);
+					if(student.checkPaidStateTax(paidStateTax) == false) { 
 						System.out.print("Have you volunteered for a cause and have valid proof of it? \n(Answer YES or NO)-> ");
 						String volunteer = scan.nextLine();
 						student.setVolunteer(volunteer);
@@ -52,12 +51,12 @@ public class Tester {
 							System.out.println("Student is eligible for scholarship");
 						}
 					}
-					else { //Student has worked part time for at least 6 months
+					else { //Student has had their parents pay for California tax
 						System.out.println();
 						System.out.println("Student is eligible for scholarship");
 					}
 				}
-				else { //Student has had their parents pay for California tax
+				else { //Student has worked part time for at least 6 months
 					System.out.println();
 					System.out.println("Student is eligible for scholarship");
 				}
