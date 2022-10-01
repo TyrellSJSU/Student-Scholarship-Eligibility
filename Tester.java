@@ -34,15 +34,15 @@ public class Tester {
 			System.out.print("Have you lived in California for the last two years? \n(Answer YES or NO)-> ");
 			String livedInCali = scan.nextLine();
 			student.setLivedInCali(livedInCali);
-			if (student.checkLivedInCali(livedInCali) == false) { 
+			if (student.checkLivedInCali(livedInCali) == false) { //Student has NOT lived in California for last 2 years
 				System.out.print("Have you worked part time for atleast 6 months in your field of study? \n(Answer YES or NO)-> ");
 				String partTime = scan.nextLine();
 				student.setPartTime(partTime);
-				if(student.checkPartTime(partTime) == false) {
+				if(student.checkPartTime(partTime) == false) { //Student has NOT worked part time
 					System.out.print("Have your parents paid California state tax for at least 1 year in their lifetime? \n(Answer YES or NO)-> ");
 					String paidStateTax = scan.nextLine();
 					student.setPaidStateTax(paidStateTax);
-					if(student.checkPaidStateTax(paidStateTax) == false) { 
+					if(student.checkPaidStateTax(paidStateTax) == false) { //Student parent's has NOT paid tax
 						System.out.print("Have you volunteered for a cause and have valid proof of it? \n(Answer YES or NO)-> ");
 						String volunteer = scan.nextLine();
 						student.setVolunteer(volunteer);
