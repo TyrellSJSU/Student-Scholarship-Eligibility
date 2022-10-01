@@ -39,22 +39,37 @@ public class Tester {
 				System.out.print("Have your parents paid California state tax for at least 1 year in their lifetime? \n(Answer YES or NO)-> ");
 				String paidStateTax = scan.nextLine();
 				student.setPaidStateTax(paidStateTax);
+				if(student.checkPaidStateTax(paidStateTax) == false) {
+					System.out.print("Have you worked part time for atleast 6 months in your field of study? \n(Answer YES or NO)-> ");
+					String partTime = scan.nextLine();
+					student.setPartTime(partTime);
+					if(student.checkPartTime(partTime) == false) { //If student fails the criterion, check if it satisfies E
+						System.out.print("Have you volunteered for a cause and have valid proof of it? \n(Answer YES or NO)-> ");
+						String volunteer = scan.nextLine();
+						student.setVolunteer(volunteer);
+						if(student.checkVolunteer(volunteer) == true) { //Student has volunteered for a cause
+							System.out.println();
+							System.out.println("Student is eligible for scholarship");
+						}
+					}
+					else { //Student has worked part time for at least 6 months
+						System.out.println();
+						System.out.println("Student is eligible for scholarship");
+					}
+				}
+				else { //Student has had their parents pay for California tax
+					System.out.println();
+					System.out.println("Student is eligible for scholarship");
+				}
 			}
-			
-			System.out.print("Have you worked part time for atleast 6 months in your field of study? \n(Answer YES or NO)-> ");
-			String partTime = scan.nextLine();
-			student.setPartTime(partTime);
-			if(student.checkPartTime(partTime) == false) { //If student fails the criterion, check if it satisfies E
-				System.out.print("Have you volunteered for a cause and have valid proof of it? \n(Answer YES or NO)-> ");
-				String volunteer = scan.nextLine();
-				student.setVolunteer(volunteer);
-			}
-			
-			if(student.checkResidency()) { //Checks whether the students fulfills CA Residency conditions
+			else {//Student has lived in California for the last 2 years
 				System.out.println();
 				System.out.println("Student is eligible for scholarship");
 			}
-			else { //Otherwise check the student's household income
+			
+			
+			
+			if(!student.checkResidency()) { //Checks whether the students has not fulfilled CA Residency conditions
 				System.out.print("Do you have a household income less than 5000$? \n(Answer YES or NO)-> ");
 				String houseIncome = scan.nextLine();
 				student.setHouseIncome(houseIncome);
@@ -67,6 +82,7 @@ public class Tester {
 					System.out.println("Student is not eligible for scholarship");
 				}
 			}
+			
 			
 			}
 		else { //In the event that the student does not fulfill the age requirements
